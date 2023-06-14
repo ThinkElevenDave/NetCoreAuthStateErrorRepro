@@ -3,7 +3,7 @@ using Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IMyService, MyService>();
 builder.Services.AddAuthentication().AddCookie(options =>
 {
 	options.Cookie.HttpOnly = true;
@@ -17,7 +17,6 @@ var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-	app.UseExceptionHandler("/Error");
 	app.UseHsts();
 }
 

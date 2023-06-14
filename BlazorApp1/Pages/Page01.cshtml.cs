@@ -10,6 +10,9 @@ namespace BlazorApp1.Pages
     {
         public async Task<IActionResult> OnGetAsync()
         {
+
+			// This page has no content - it creates an authentication cookie and redirects back to Blazor
+
 			var authProperties = new AuthenticationProperties
 			{
 				IsPersistent = false
@@ -23,7 +26,7 @@ namespace BlazorApp1.Pages
 
 			await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), authProperties);
 
-			return LocalRedirect(Url.Content("~/Page02"));
+			return LocalRedirect(Url.Content("~/Page02")); // Redirect back to Blazor
 
 		}
     }

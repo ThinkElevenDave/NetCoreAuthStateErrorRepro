@@ -1,6 +1,6 @@
 ﻿namespace Services
 {
-	public interface IFileService
+	public interface IMyService
 	{
 		Task<string> GetNameClaimValue();
 	}

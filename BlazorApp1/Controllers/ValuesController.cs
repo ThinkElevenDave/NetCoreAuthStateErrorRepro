@@ -9,11 +9,11 @@ namespace BlazorApp1.Controllers
 	public class ValuesController : ControllerBase
 	{
 
-		private IFileService _fileService;
+		private IMyService _myService;
 
-		public ValuesController(IFileService fileService)
+		public ValuesController(IMyService myService)
 		{
-			_fileService = fileService;
+			_myService = myService;
 		}
 
 		[HttpGet("[action]")]
@@ -21,10 +21,18 @@ namespace BlazorApp1.Controllers
 		{
 			try
 			{
-				var x = await _fileService.GetNameClaimValue();
+				var x = await _myService.GetNameClaimValue();
 			}
 			catch (Exception ex)
 			{
+
+				/*
+				 "GetAuthenticationStateAsync was called before SetAuthenticationState."
+				    at Microsoft.AspNetCore.Components.Server.ServerAuthenticationStateProvider.GetAuthenticationStateAsync()
+					at Services.MyService.<GetNameClaimValue>d__2.MoveNext() in C:\Users\DavidClough\source\repos\BlazorApp1\Services\MyService.cs:line 18
+					at BlazorApp1.Controllers.ValuesController.<TestAsync>d__2.MoveNext() in C:\Users\DavidClough\source\repos\BlazorApp1\BlazorApp1\Controllers\ValuesController.cs:line 24
+				 */
+
 				throw;
 			}
 

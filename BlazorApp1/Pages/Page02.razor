@@ -9,24 +9,37 @@
 	}
 </style>
 
+<h3>
+	Blazor
+</h3>
+
+<p>
+	Using the injected service, the claim value retrieved via Blazor is '@ClaimValue'
+</p>
+
+<h3>
+	Controller
+</h3>
+
+<p>
+	The image controller also accesses the service via injection.  A smiley face image should be returned from the controller if the controller is able to read the claim value:
+</p>
+
 <p>
 	<img src="api/Values/Test" alt="This should be a happy face" />
 </p>
 
-<p>
-	The claim value was @ClaimValue
-</p>
 
 @code {
 
 	public string ClaimValue { get; set; }
 
 	[Inject]
-	IFileService fileService { get; set; }
+	IMyService myService { get; set; }
 
 	protected async override Task OnInitializedAsync()
 	{
-		ClaimValue = await fileService.GetNameClaimValue();
+		ClaimValue = await myService.GetNameClaimValue();
 		StateHasChanged();
 	}
 

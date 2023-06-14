@@ -4,11 +4,11 @@ using System.Security.Claims;
 
 namespace Services
 {
-	public class FileService : IFileService
+	public class MyService : IMyService
 	{
 		private readonly AuthenticationStateProvider _stateProvider;
 
-		public FileService(AuthenticationStateProvider authenticationStateProvider)
+		public MyService(AuthenticationStateProvider authenticationStateProvider)
 		{
 			_stateProvider = authenticationStateProvider;
 		}
