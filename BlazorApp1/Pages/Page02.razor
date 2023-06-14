@@ -1,0 +1,33 @@
+﻿@using Services
+@page "/Page02"
+
+<style>
+	img {
+		border:1px solid grey;
+		width: 50px;
+		height: 50px;
+	}
+</style>
+
+<p>
+	<img src="api/Values/Test" alt="This should be a happy face" />
+</p>
+
+<p>
+	The claim value was @ClaimValue
+</p>
+
+@code {
+
+	public string ClaimValue { get; set; }
+
+	[Inject]
+	IFileService fileService { get; set; }
+
+	protected async override Task OnInitializedAsync()
+	{
+		ClaimValue = await fileService.GetNameClaimValue();
+		StateHasChanged();
+	}
+
+}

@@ -1,0 +1,21 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<p>
+	<button @onclick="GoToPage">
+		Create identity via Razor Page
+	</button>
+</p>
+
+@code {
+
+	[Inject]
+	NavigationManager navigationManager { get; set; }
+
+	public void GoToPage()
+	{
+		navigationManager.NavigateTo("/Page01", true);
+	}
+
+}
